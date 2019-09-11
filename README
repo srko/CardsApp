@@ -1,8 +1,8 @@
 # CardsApp
 
-Test app for Cards Against Humanity localization — [Heroku](https://ucardapp.herokuapp.com/)
+Test app for Cards Against Humanity localization → [Heroku](https://ucardapp.herokuapp.com/)
 
-## Built With
+## Built With 
 
 * [Node.js](https://github.com/nodejs/node) - a JavaScript runtime environment
 * [React.js](https://github.com/facebook/react) - a declarative, efficient, and flexible JavaScript library for building user interfaces
