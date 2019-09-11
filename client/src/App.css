@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400&subset=cyrillic');
+
+body {
+  background: #f9f9f9;
+  font-family: 'Fira Sans', sans-serif;
+  text-align: left;
+  padding: 5rem;
+}
+
+.App {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+
+  /*border: 1px solid red;*/
+}
+
+.question {
+  font-size: 85px;
+  font-family: 'Fira Sans';
+  color: rgb(16, 16, 16);
+  line-height: 1.1;
+}
+
+.answers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.answer {
+  font-size: 30px;
+  font-family: 'Fira Sans';
+  font-weight: 200;
+  color: rgb(16, 16, 16);
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 117.6px 2.4px rgba(0, 0, 0, 0.03);
+  margin: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 30px;
+
+  border: 1px solid white;
+
+  text-decoration: none;
+
+  transition: background-color 0.5s ease-out, color 0.3s ease-out 0s,
+    box-shadow 0.6s ease-in-out 0s, border 0.5s ease-in-out 0s;
+}
+
+.answer:hover {
+  color: rgb(0, 102, 255);
+  box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0);
+  /*background-color: rgb(0, 102, 255);*/
+  border: 1px solid rgb(0, 102, 255);
+
+  transition: background-color 0.3s ease-out 0s, color 0.2s ease-out 0s,
+    box-shadow 0.3s ease-in-out 0s, border 0.3s ease-in-out 0s;
+
+  cursor: pointer;
+}
+
+.answer:focus {
+  border: 1px solid pink;
+  outline: none;
+}
+
+.selected {
+  color: white;
+  background-color: rgb(0, 102, 255);
+  border: 1px solid rgb(0, 102, 255);
+  box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0.5);
+  z-index: 50;
+  transition: background-color 0.5s ease-out 0s, color 0.5s ease-out 0s,
+    box-shadow 0.5s ease-in-out 0s, border 0.5s ease-in-out 0s;
+}
+.selected:hover {
+  color: white;
+  box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0.3);
+  transition: background-color.3s ease-out 0s, color 0.2s ease-out 0s,
+    box-shadow 0.3s ease-in-out 0s, border 0.3s ease-in-out 0s;
+}
+
+.disabled {
+  color: lightgrey;
+  pointer-events: none;
+  cursor: default;
+  box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0);
+  opacity: 0.5;
+}
+
+.add {
+  margin-top: 1rem;
+  /*font-size: 24px;
+  font-family: "Fira Sans";
+  font-weight: 300;
+  color: rgb(0, 102, 255);
+
+  border-bottom: 1px dashed rgb(0, 102, 255);
+  text-decoration: none;*/
+}
+
+.addName {
+  margin: 1rem;
+}
+
+.add form {
+  /*box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0.2);*/
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.add form label {
+}
+
+.add form input[type='text'] {
+  border: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background: #ffffff !important;
+  outline: none;
+  height: 50px;
+  width: 200px;
+  color: #cccccc;
+  transition: all 0.5s ease-in-out 0s;
+  padding: 0;
+  padding-left: 20px;
+  font-size: 16px;
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  z-index: 50;
+}
+.add form input[type='text']:focus {
+  color: #000000;
+  transition: all 0.3s ease-in-out 0s;
+}
+.add form input[type='text']::placeholder {
+  font-size: 16px;
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: lightgrey;
+  opacity: 0.8;
+}
+
+.add form input[type='submit'] {
+  border: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background: rgb(0, 102, 255) !important;
+  color: #fff;
+  outline: none;
+  height: 50px;
+  width: 120px;
+  transition: all 0.5s ease-in-out 0s;
+  padding: 0;
+}
+.add form input[type='submit']:hover {
+  /*color: #fff;
+  border: 1px solid #000000;*/
+  /*background: #008aed !important;*/
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  box-shadow: 0px 0px 75px 2.4px rgba(0, 102, 255, 0.2);
+}
+.add form input[type='submit']:active {
+  /*color: #fff;
+  border: 1px solid #000000;*/
+  background: #008aed !important;
+  transition: all 0.3s ease-in-out 0s;
+  box-shadow: 0px 0px 25px 2.4px rgba(0, 102, 255, 0.2);
+}
+.add form input[type='submit']:focus {
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+}
+.add form input[type='submit']:disabled {
+  background: lightgrey !important;
+  transition: all 0.3s ease-in-out 0s;
+}
+.add form input[type='submit']:hover:disabled {
+  background: lightgrey !important;
+  transition: all 0.3s ease-in-out 0s;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: auto;
+  box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0);
+}
+
+.next {
+  position: absolute;
+  right: -100px;
+  top: 100px;
+
+  font-size: 72px;
+  font-family: 'Fira Sans';
+  font-weight: 300;
+  color: rgb(86, 143, 255);
+  line-height: 1.2;
+
+  margin: 0.5rem;
+  border-radius: 50%;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 117.6px 2.4px rgba(0, 0, 0, 0.03);
+
+  width: 95px;
+  height: 95px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

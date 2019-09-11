@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400&subset=cyrillic');
+$breakpoints: (
+  'phone': 400px,
+  'phone-wide': 480px,
+  'phablet': 560px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+// @include mq('phone') {
+//   padding: 0;
+// }
+
+body {
+  background: #f9f9f9;
+  font-family: 'Fira Sans', sans-serif;
+  margin: 1rem;
+  text-align: left;
+  @include mq('tablet') {
+    margin: 2rem;
+  }
+  @include mq('tablet-wide') {
+    margin: 3rem 5rem 5rem;
+  }
+}
+
+.app {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 900px;
+  /*border: 1px solid red;*/
+}
+
+.question {
+  color: rgb(16, 16, 16);
+  font-family: 'Fira Sans';
+  font-size: 32px;
+  line-height: 1.1;
+  margin-top: 1rem;
+  @include mq('tablet') {
+    font-size: 48px;
+  }
+  @include mq('tablet-wide') {
+    font-size: 60px;
+  }
+}
+
+.answers {
+  display: flex;
+  // display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  @include mq('tablet') {
+    margin: 3rem 0;
+  }
+}
+
+.answer {
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.5s ease-out, color 0.3s ease-out 0s, box-shadow 0.6s ease-in-out 0s,
+    border 0.5s ease-in-out 0s;
+  text-decoration: none;
+  color: rgb(16, 16, 16);
+  border: 1px solid white;
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 117.6px 2.4px rgba(0, 0, 0, 0.03);
+  font-family: 'Fira Sans';
+  font-size: 14px;
+  font-weight: 200;
+  word-wrap: break-word;
+  word-break: keep-all;
+  @include mq('tablet') {
+    margin: 1rem 1rem 0 0;
+    padding: 1rem 1.5rem;
+    font-size: 18px;
+  }
+  @include mq('tablet-wide') {
+    font-size: 24px;
+  }
+}
+
+.answer:hover {
+  cursor: pointer;
+  transition: background-color 0.3s ease-out 0s, color 0.2s ease-out 0s,
+    box-shadow 0.3s ease-in-out 0s, border 0.3s ease-in-out 0s;
+  color: rgb(0, 102, 255);
+  /*background-color: rgb(0, 102, 255);*/
+  border: 1px solid rgb(0, 102, 255);
+  box-shadow: 0 0 100px 2.4px rgba(0, 102, 255, 0);
+}
+
+.answer:focus {
+  border: 1px solid pink;
+  outline: none;
+}
+
+.selected {
+  z-index: 50;
+  transition: background-color 0.5s ease-out 0s, color 0.5s ease-out 0s,
+    box-shadow 0.5s ease-in-out 0s, border 0.5s ease-in-out 0s;
+  color: white;
+  border: 1px solid rgb(0, 102, 255);
+  background-color: rgb(0, 102, 255);
+  box-shadow: 0 0 100px 2.4px rgba(0, 102, 255, 0.5);
+}
+
+.selected:hover {
+  transition: background-color.3s ease-out 0s, color 0.2s ease-out 0s,
+    box-shadow 0.3s ease-in-out 0s, border 0.3s ease-in-out 0s;
+  color: white;
+  box-shadow: 0 0 100px 2.4px rgba(0, 102, 255, 0.3);
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
+  color: lightgrey;
+  box-shadow: 0 0 100px 2.4px rgba(0, 102, 255, 0);
+}
+
+.add {
+  margin-top: 1rem;
+}
+
+.addName {
+  margin: 1rem;
+}
+
+.add form {
+  /*box-shadow: 0px 0px 100px 2.4px rgba(0, 102, 255, 0.2);*/
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  // border-bottom-right-radius: 30px;
+  // border-bottom-left-radius: 30px;
+  display: flex;
+
+  label {
+  }
+}
+
+.add form input[type='text'] {
+  background: #ffffff !important;
+  border: none;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+
+  // width: 100%;
+  height: 50px;
+  padding: 0 10px 0 20px;
+  transition: all 0.5s ease-in-out 0s;
+  color: #cccccc;
+
+  outline: none;
+
+  font-family: 'Fira Sans';
+  font-size: 16px;
+  font-weight: 300;
+  z-index: 50;
+  @include mq('tablet') {
+    min-width: 300px;
+  }
+  @include mq('tablet-wide') {
+    height: 62px;
+    font-size: 24px;
+    padding-left: 25px;
+  }
+
+  &:focus {
+    color: #000000;
+    transition: color 0.3s ease-in-out 0s;
+  }
+}
+
+.add form input[type='text']::placeholder {
+  // letter-spacing: 2px;
+  opacity: 0.9;
+  color: lightgrey;
+  font-family: 'Fira Sans';
+  font-size: 14px;
+  font-weight: 200;
+  @include mq('tablet-wide') {
+    font-size: 24px;
+  }
+}
+
+.add form input[type='submit'] {
+  // width: 100%;
+  height: 50px;
+  padding: 0 25px 0 20px;
+  transition: all 0.5s ease-in-out 0s;
+  color: #fff;
+  font-family: 'Fira Sans';
+  font-size: 14px;
+  font-weight: 200;
+  border: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  outline: none;
+  background: rgb(0, 102, 255) !important;
+  @include mq('tablet-wide') {
+    height: 62px;
+    font-size: 24px;
+  }
+}
+
+.add form input[type='submit']:hover {
+  cursor: pointer;
+  /*color: #fff;
+  border: 1px solid #000000;*/
+  /*background: #008aed !important;*/
+  transition: all 0.3s ease-in-out 0s;
+  box-shadow: 0 0 75px 2.4px rgba(0, 102, 255, 0.2);
+}
+
+.add form input[type='submit']:active {
+  transition: all 0.3s ease-in-out 0s;
+  /*color: #fff;
+  border: 1px solid #000000;*/
+  background: #008aed !important;
+  box-shadow: 0 0 25px 2.4px rgba(0, 102, 255, 0.2);
+}
+
+.add form input[type='submit']:focus {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.add form input[type='submit']:disabled {
+  transition: all 0.3s ease-in-out 0s;
+  background: lightgrey !important;
+}
+
+.add form input[type='submit']:hover:disabled {
+  cursor: auto;
+  transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  color: #fff;
+  border: none;
+  background: lightgrey !important;
+  box-shadow: 0 0 100px 2.4px rgba(0, 102, 255, 0);
+}
+
+.next {
+  // position: absolute;
+  //
+  // top: 100px;
+  //
+  // right: -100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  // margin: 0.5rem;
+  margin-top: 2rem;
+  color: rgb(86, 143, 255);
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 117.6px 2.4px rgba(0, 0, 0, 0.03);
+  font-family: 'Fira Sans';
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+//  Grey background
+.backdropStyle {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 50px;
+}
+
+// The modal "window"
+.modalStyle {
+  background-color: #fff;
+  border-radius: 5px;
+  max-width: 500px;
+  min-height: 300px;
+  margin: 0 auto;
+  padding: 30px;
+}
